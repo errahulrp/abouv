@@ -11,8 +11,8 @@ async function delay(ms) {
 async function fetchOtpFromEmail() {
     const config = {
         imap: {
-            user: process.env.EMAIL_USER,
-            password: process.env.EMAIL_PASS,
+            user: 'errahul.rp@gmail.com',
+            password: 'qbnm dvxk kjwk rvrx',
             host: 'imap.gmail.com',
             port: 993,
             tls: true,

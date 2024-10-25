@@ -30,11 +30,6 @@ jobs:
       - name: Install dependencies 📚
         run: npm ci
 
-      - name: Set up environment variables 📋
-        run: |
-          echo "EMAIL_USER=${{ secrets.EMAIL_USER }}" >> .env
-          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
-
       - name: Install Playwright Browsers 📚
         run: npx playwright install --with-deps
 
