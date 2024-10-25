@@ -39,7 +39,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npm run test
+        run: xvfb-run -a npm run test      
 
       - name: Deploy Report 🚀
         if: success()
