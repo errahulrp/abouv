@@ -25,5 +25,5 @@ The tests cover the following key pages and actions in the onboarding process:
 ## Getting Started
 
 ### Report
-- [Click here for Playwright Report](https://github.com/errahulrp/abouv/tree/main/test-results/index.html)
+- [Click here for Playwright Report](https://errahulrp.github.io/abouv/report/index.html)
 
