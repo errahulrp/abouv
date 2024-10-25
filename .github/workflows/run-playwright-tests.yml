@@ -1,0 +1,50 @@
+name: Run Playwright Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+
+  test:
+    name: Run Playwright tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 📚
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies 📚
+        run: npm ci
+
+      - name: Set up environment variables 📋
+        run: |
+          echo "EMAIL_USER=${{ secrets.EMAIL_USER }}" >> .env
+          echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
+
+      - name: Install Playwright Browsers 📚
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npm run test
+
+      - name: Deploy Report 🚀
+        if: success()
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: test-results
+          target-folder: report/
